@@ -1,0 +1,2 @@
+# Memomind
+Esta aplicação foi desenvolvida como parte do projeto das disciplinas de Programação para Dispositivos Móveis e Programação WEB da FATEC - Prof. Waldomiro May. Trata-se de um Jogo da Memória para ambientes corporativos que pretendem tornar o tempo de descanso de seus funcionários  um pouco mais divertido.

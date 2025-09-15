@@ -1,0 +1,277 @@
+body {
+    background: #191919;
+    color: #f2f2f2;
+    font-family: 'Madimi One';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 93vh;
+    margin: 0;
+    padding: 22px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 21px;
+}
+.logo .row {
+    display: flex;
+    gap: 21px;
+}
+.logo .letra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    font-size: 65px;
+    line-height: 1;
+    border-radius: 60%;
+    border: 1px solid #f2f2f2;
+    transition: all 0.3s ease;
+    font-family: 'Madimi One', sans-serif;
+}
+
+/* Animações para piscar as letras */
+@keyframes acender-vermelho {
+    0% 
+    {
+        background: #932a2a80;
+        box-shadow: none;
+    }
+    50% 
+    {
+        background: #d60f0f;
+        color: #f2f2f2;
+        box-shadow: 0px 0px 80px #d60f0f, 0px 0px 40px #f09999;
+    }
+    100% 
+    {
+        background: #d60f0f80;
+        box-shadow: none;
+    }
+}
+@keyframes acender-azul{
+    0% 
+    {
+        background: #2533b67e;
+        box-shadow: none;
+    }
+    50% 
+    {
+        background: #2533b6;
+        color: #f2f2f2;
+        box-shadow: 0px 0px 80px #2533b6, 0px 0px 40px #9e99f1;
+    }
+    100% 
+    {
+        background: #2533b67e;
+        box-shadow: none;
+    }
+}
+@keyframes acender-amarelo{
+    0% 
+    {
+        background: #dabe0e88;
+        box-shadow: none;
+    }
+    50% 
+    {
+        background: #dabf0e;
+        color: #f2f2f2;
+        box-shadow: 0px 0px 80px #dabf0e, 0px 0px 40px #f1e895;
+    }
+    100% 
+    {
+        background: #dabe0e88;
+        box-shadow: none;
+    }
+}
+@keyframes acender-verde{
+    0% 
+    {
+        background: #2ed30d81;
+        box-shadow: none;
+    }
+    50% 
+    {
+        background: #2ed30d;
+        color: #f2f2f2;
+        box-shadow: 0px 0px 80px #2ed30d, 0px 0px 40px #b0f096;
+    }
+    100% 
+    {
+        background: #2ed30d81;
+        box-shadow: none;
+    }
+}
+
+/* Primeira linha do MEMOMIND (MEMO) */
+.logo .row:first-child .letra:nth-child(1) {
+    background: #932a2a80;
+    color: #f2f2f2ad;
+    animation: acender-vermelho 4.0s ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+.logo .row:first-child .letra:nth-child(2){
+    background: #2533b67e;
+    color: #f2f2f2ad;
+    animation: acender-azul 4.0s ease-in-out infinite;
+    animation-delay: 0.4s;
+}
+.logo .row:first-child .letra:nth-child(3) {
+    background: #dabe0e88;
+    color: #f2f2f2ad;
+    animation: acender-amarelo 4.0s ease-in-out infinite;
+    animation-delay: 0.6s;
+}
+.logo .row:first-child .letra:nth-child(4) {
+    background: #2ed30d81;
+    color: #f2f2f2ad;
+    animation: acender-verde 4.0s ease-in-out infinite;
+    animation-delay: 0.8s;
+}
+
+/* Segunda linha do MEMOMIND (MIND) */
+.logo .row:last-child .letra:nth-child(1){
+    background: #dabe0e88;
+    color: #f2f2f2ad;
+    animation: acender-amarelo 4.0s ease-in-out infinite;
+    animation-delay: 1.0s;
+}
+.logo .row:last-child .letra:nth-child(2) {
+    background: #2ed30d81;
+    color: #f2f2f2ad;
+    animation: acender-verde 4.0s ease-in-out infinite;
+    animation-delay: 1.2s;
+}
+.logo .row:last-child .letra:nth-child(3) {
+    background: #932a2a80;
+    color: #f2f2f2ad;
+    animation: acender-vermelho 4.0s ease-in-out infinite;
+    animation-delay: 1.4s;
+}
+.logo .row:last-child .letra:nth-child(4) {
+    background: #2533b67e;
+    color: #f2f2f2ad;
+    animation: acender-azul 4.0s ease-in-out infinite;
+    animation-delay: 1.6s;
+}
+
+/* Container do formulário de login */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 21px;
+}
+
+/* Formulário de login */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    max-width: 650px;
+    margin-top: 50px;
+}
+
+/* Estilo dos campos */
+.input-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    gap: 10px;
+}
+.input-group .icon {
+    width: 35px;
+    height: 35px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: none;
+    background: #f2f2f2;
+    color: #797979;
+    font-size: 20px;
+}
+
+/* Ícones dentro dos campos de entrada */
+.user-icon {
+    background-image: url('../images/user-icon.png');
+}
+.lock-icon {
+    background-image: url('../images/lock-icon.png');
+}
+
+/* --- CORREÇÃO DO AGRUPADOR DA SENHA --- */
+.password-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px; 
+}
+
+/* Estilo do botão "Esqueceu a senha?" */
+.forgot-password {
+    color: #f2f2f2;
+    text-decoration: none;
+    font-family: Sans-serif;
+    font-style: normal;
+    font-size: 15px;
+    margin-top: 0;
+    width: 100%;
+    text-align: left;
+}
+
+/* Cor do "Clique aqui" (o span dentro do link) fica azul */
+.forgot-password span {
+    color: #39ade3;
+    text-decoration: underline;
+}
+
+/* Estilo do botão de "Jogar" */
+.botao-jogar{
+    background: #2533b6bb;
+}
+/* Efeito de brilho ao passar o mouse */
+.botao-jogar:hover {
+    background: #2533b6;
+    animation: acender-azul ease-in-out infinite;
+    box-shadow: 0px 0px 80px #2534B6, 0px 0px 40px #6770bd;
+}
+
+/* Estilo do botão de "Cadastre-se" */
+.botao-cadastrar{
+    background: #932a2ab6;
+}
+/* Efeito de brilho ao passar o mouse */
+.botao-cadastrar:hover {
+    background: #932a2a;
+    animation: acender-vermelho ease-in-out infinite;
+    box-shadow: 0px 0px 80px #932A2A, 0px 0px 40px #9b5454;
+}
+
+/* Estilo comum para ambos os botões de "jogar" e "cadastrar-se" */
+.botao-jogar, .botao-cadastrar {
+    width: 300px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    line-height: 1;
+    font-family: 'Madimi One', sans-serif;
+    color: #f2f2f2;
+    margin-top: 10px;
+    text-decoration: none;
+    border: 1px solid #f2f2f273;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}

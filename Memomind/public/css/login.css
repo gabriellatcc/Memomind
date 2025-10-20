@@ -108,6 +108,7 @@ body {
     }
 }
 
+
 /* Primeira linha do MEMOMIND (MEMO) */
 .logo .row:first-child .letra:nth-child(1) {
     background: #932a2a80;
@@ -171,12 +172,34 @@ body {
 /* Formulário de login */
 .login-form {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
+    flex-direction: row;
+    gap: 40px;
     width: 100%;
-    max-width: 650px;
+    max-width: 800px;
     margin-top: 50px;
+    align-items: flex-start;
+    padding: 40px;
+    box-sizing: border-box;
+}
+.form-esquerda {
+    width: 55%;
+}
+.form-direita {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+.form-direita .botao-jogar,
+.form-direita .botao-cadastrar {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-esquerda .input-group,
+.form-esquerda .password-wrapper {
+    margin-bottom: 15px; 
 }
 
 /* Estilo dos campos */
@@ -195,12 +218,12 @@ body {
     flex-shrink: 0;
 }
 input[type="text"], input[type="password"] {
-    width: 100%;
+    width: 400px;
     padding: 8px 12px;
     border: none;
     background: #f2f2f2;
     color: #797979;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 /* Ícones dentro dos campos de entrada */
@@ -210,8 +233,10 @@ input[type="text"], input[type="password"] {
 .lock-icon {
     background-image: url('../images/lock-icon.png');
 }
+.mail-icon {
+    background-image: url('../images/mail-icon.png');
+}
 
-/* --- CORREÇÃO DO AGRUPADOR DA SENHA --- */
 .password-wrapper {
     width: 100%;
     display: flex;
@@ -237,6 +262,23 @@ input[type="text"], input[type="password"] {
     text-decoration: underline;
 }
 
+/* Estilo comum para ambos os botões de "jogar" e "cadastrar-se" */
+.botao-jogar, .botao-cadastrar {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    line-height: 1;
+    font-family: 'Madimi One', sans-serif;
+    color: #f2f2f2;
+    margin-top: 0px 0px 0px 0px;
+    text-decoration: none;
+    border: 0.5px solid #f2f2f273;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
 /* Estilo do botão de "Jogar" */
 .botao-jogar{
     background: #2533b6bb;
@@ -257,21 +299,4 @@ input[type="text"], input[type="password"] {
     background: #932a2a;
     animation: acender-vermelho ease-in-out infinite;
     box-shadow: 0px 0px 80px #932A2A, 0px 0px 40px #9b5454;
-}
-
-/* Estilo comum para ambos os botões de "jogar" e "cadastrar-se" */
-.botao-jogar, .botao-cadastrar {
-    width: 300px;
-    height: 52px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 45px;
-    line-height: 1;
-    font-family: 'Madimi One', sans-serif;
-    color: #f2f2f2;
-    margin-top: 10px;
-    text-decoration: none;
-    border: 1px solid #f2f2f273;
-    transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEMOMIND - Login</title>
+    <title>MEMOMIND - Cadastro</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,27 +30,30 @@
             </div>
         </header>
 
-        <form class="login-form" method="POST" action="">
-            @csrf
+        <form class="login-form" action="cadastro.php" method="POST">
 
             <div class="form-esquerda">
                 <div class="input-group">
-                    <i class="icon user-icon"></i>
-                    <input type="text" placeholder="Nome de usuário" id="username" name="username" required>
+                    <i class="icon mail-icon"></i>
+                    <input type="text" placeholder="nome@email.com" id="email" name="email" required>
                 </div>
 
-                <div class="password-wrapper">
-                    <div class="input-group">
-                        <i class="icon lock-icon"></i>
-                        <input type="password" placeholder="Senha" id="password" name="password" required>
-                    </div>
-                    <a href="#" class="forgot-password">
-                        Esqueceu a senha? <span>Clique aqui</span>
-                    </a>
+                <div class="input-group">
+                    <i class="icon user-icon"></i>
+                    <input type="text" placeholder="um nome de usuário de 3 à 20 caracteres" id="username" name="username" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="icon lock-icon"></i>
+                    <input type="password" placeholder="senha com dígitos e números" id="password" name="password" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" placeholder="confirme sua senha" id="confirm_password" name="confirm_password" required>
                 </div>
             </div>
             <div class="form-direita"> <button type="submit" class="botao-jogar">Jogar</button>
-                <a href="{{ route('cadastro.form') }}" class="botao-cadastrar">Cadastrar</a>
+                <a href="index.php" class="botao-cadastrar">Cancelar</a>
             </div>
         </form>
     </div>

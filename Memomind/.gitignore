@@ -22,3 +22,8 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+/dist
+/coverage
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*

@@ -217,7 +217,7 @@ body {
     background-repeat: no-repeat;
     flex-shrink: 0;
 }
-input[type="text"], input[type="password"] {
+input[type="username"], input[type="password"] {
     width: 400px;
     padding: 8px 12px;
     border: none;
@@ -290,13 +290,16 @@ input[type="text"], input[type="password"] {
     box-shadow: 0px 0px 80px #2534B6, 0px 0px 40px #6770bd;
 }
 
-/* Estilo do botão de "Cadastre-se" */
+/* Estilo do botão de "Cadastre-se" 
+originalmente 932a2ab6 */
 .botao-cadastrar{
-    background: #932a2ab6;
+    background: #237821b6;
 }
-/* Efeito de brilho ao passar o mouse */
+/* Efeito de brilho ao passar o mouse
+originalmente
+932a2a */
 .botao-cadastrar:hover {
-    background: #932a2a;
+    background: #2a934b;
     animation: acender-vermelho ease-in-out infinite;
-    box-shadow: 0px 0px 80px #932A2A, 0px 0px 40px #9b5454;
+    box-shadow: 0px 0px 80px #2a934b, 0px 0px 40px hsl(130, 30%, 47%);
 }

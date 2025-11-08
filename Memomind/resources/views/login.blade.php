@@ -30,28 +30,38 @@
             </div>
         </header>
 
-        <form class="login-form" method="POST" action="">
+        @if ($errors->any())
+        <div class="alert alert-danger" style="color: red; margin-bottom: 1rem;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
+        <form class="login-form" method="POST" action="{{ route('login.submit') }}">
             @csrf
 
-            <div class="form-esquerda"> <!--css desse é form-esquerda -->
-                <div class="input-group"> <!--css desse é input-group -->
-                    <i class="icon user-icon"></i> <!--css desse é o caminho user-icon -->
-                    <input type="username" placeholder="Nome de usuário" id="username" name="username" required><!--css desse é o input[type="username"] -->
+            <div class="form-esquerda">
+                <div class="input-group">
+                    <i class="icon user-icon"></i>
+                    <input type="text" placeholder="Nome de usuário ou e-mail" id="username" name="username" value="{{ old('name') }}" required>
                 </div>
 
-                <div class="password-wrapper"> <!--css desse é password-wrapper -->
-                    <div class="input-group"> <!--css desse é input-group -->
-                        <i class="icon lock-icon"></i> <!--css desse é o caminho lock-icon -->
-                        <input type="password" placeholder="Senha" id="password" name="password" required> <!--css desse é o input[type="password"] -->
+                <div class="password-wrapper">
+                    <div class="input-group">
+                        <i class="icon lock-icon"></i>
+                        <input type="password" placeholder="Senha" id="password" name="password" required>
                     </div>
-                    <a href="#" class="forgot-password"> <!--css desse é forgot-password -->
-                        Esqueceu a senha? <span>Clique aqui</span> <!--css desse é o input[type="password"] -->
+                    <a href="#" class="forgot-password">
+                        Esqueceu a senha? <span>Clique aqui</span>
                     </a>
                 </div>
             </div>
             <div class="form-direita">
-                <button type="submit" class="botao-jogar">Jogar</button> <!--css desse é botao - jogar -->
-                <a href="{{ route('cadastro.form') }}" class="botao-cadastrar">Cadastrar</a> <!--css desse é botao - cadastrar -->
+                <button type="submit" class="botao-jogar">Jogar</button>
+                <a href="{{ route('cadastro.form') }}" class="botao-cadastrar">Cadastrar</a>
             </div>
         </form>
     </div>

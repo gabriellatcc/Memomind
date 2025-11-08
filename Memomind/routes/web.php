@@ -12,7 +12,8 @@ Route::get('/../../index', function () {
 
 //chama rota para tela de login (View)
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
-
+//rota processamento login
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.submit');
 
 Route::get('/cadastro', [CadastroController::class, 'showRegistrationForm'])->name('cadastro.form');
 Route::post('/cadastro', [CadastroController::class, 'register'])->name('cadastro.submit');

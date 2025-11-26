@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CadastroController;
+use App\Http\Controllers\TesteController;
 
 Route::redirect('/', '/login'); //o programa é iniciado pelo login partido daqui
 
@@ -32,3 +33,7 @@ Route::get('/dashboard', function () {
 Route::get('/teste', function () {
     return 'A rota de teste funcionou!';
 });
+
+// rota do botao que liga arduino
+Route::post('/deploy-arduino', [TesteController::class, 'deployArduino'])
+    ->name('deploy.arduino');

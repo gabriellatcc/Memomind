@@ -27,3 +27,8 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
+/storage/app/arduino-cli-home/
+/storage/app/arduino-cli-home/
+
+/public/packages/
+/public/staging/

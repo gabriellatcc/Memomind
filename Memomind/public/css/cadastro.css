@@ -1,4 +1,3 @@
-/* Estilos logiin*/
 /* Estilos Gerais do Body */
 body {
     background: #191919;
@@ -12,7 +11,7 @@ body {
     padding: 22px;
 }
 
-/* Container do formulário de login */
+/* Container de Cadastro/Login */
 .login-container {
     display: flex;
     flex-direction: column;
@@ -20,7 +19,7 @@ body {
     gap: 21px;
 }
 
-/* Logo MEMOMIND */
+/* --- LOGO MEMOMIND --- */
 .logo {
     display: flex;
     flex-direction: column;
@@ -70,7 +69,7 @@ body {
 /* Aplicação das Animações na Logo */
 /* Primeira linha do MEMOMIND (MEMO) */
 .logo .row:first-child .letra:nth-child(1) {
-    background: #d60f0f80;
+    background: #932a2a80;
     color: #f2f2f2ad;
     animation: acender-vermelho 4.0s ease-in-out infinite;
     animation-delay: 0.2s;
@@ -82,7 +81,7 @@ body {
     animation-delay: 0.4s;
 }
 .logo .row:first-child .letra:nth-child(3) {
-    background: #dabf0e88;
+    background: #dabe0e88;
     color: #f2f2f2ad;
     animation: acender-amarelo 4.0s ease-in-out infinite;
     animation-delay: 0.6s;
@@ -120,7 +119,7 @@ body {
     animation-delay: 1.6s;
 }
 
-/* Formulário de login */
+/* --- FORMULÁRIO DE CADASTRO --- */
 .login-form {
     display: flex;
     flex-direction: row;
@@ -133,10 +132,10 @@ body {
     box-sizing: border-box;
 }
 .form-esquerda {
-    width: 55%;
+    width: 60%;
 }
 .form-direita {
-    width: 45%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -148,8 +147,7 @@ body {
     max-width: 400px;
 }
 
-.form-esquerda .input-group,
-.form-esquerda .password-wrapper {
+.form-esquerda .input-group {
     margin-bottom: 15px; 
 }
 
@@ -168,13 +166,15 @@ body {
     background-repeat: no-repeat;
     flex-shrink: 0;
 }
-input[type="text"], input[type="password"] { 
+
+input[type="text"], input[type="password"] {
     width: 400px;
     padding: 8px 12px;
     border: none;
     background: #f2f2f2;
     color: #797979;
     font-size: 16px;
+    flex-grow: 1; 
 }
 
 /* Ícones dentro dos campos de entrada */
@@ -188,32 +188,7 @@ input[type="text"], input[type="password"] {
     background-image: url('../images/mail-icon.png');
 }
 
-.password-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px; 
-}
-
-/* Estilo do link "Esqueceu a senha?" */
-.forgot-password {
-    color: #f2f2f2;
-    text-decoration: none;
-    font-family: Sans-serif;
-    font-style: normal;
-    font-size: 15px;
-    margin-top: 0;
-    width: 100%;
-    text-align: left;
-}
-
-/* Cor do "Clique aqui" */
-.forgot-password span {
-    color: #39ade3;
-    text-decoration: underline;
-}
-
-/* Estilo comum para os botões */
+/* Estilo comum para ambos os botões */
 .botao-jogar, .botao-cadastrar {
     width: 100%;
     height: 52px;
@@ -224,13 +199,13 @@ input[type="text"], input[type="password"] {
     line-height: 1;
     font-family: 'Madimi One', sans-serif;
     color: #f2f2f2;
-    margin-top: 0px 0px 0px 0px;
+    margin-top: 0;
     text-decoration: none;
     border: 0.5px solid #f2f2f273;
     transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* Estilo do botão de "Jogar" */
+/* Estilo do botão de "Jogar" (Submit/Cadastro) */
 .botao-jogar{
     background: #2533b6bb;
 }
@@ -241,13 +216,39 @@ input[type="text"], input[type="password"] {
     box-shadow: 0px 0px 80px #2534B6, 0px 0px 40px #6770bd;
 }
 
-/* Estilo do botão de "Cadastrar" */
+/* Estilo do botão de "Cancelar" */
 .botao-cadastrar{
-    background: #237821b6;
+    background: #932a2a80; /
 }
 /* Efeito de brilho ao passar o mouse */
 .botao-cadastrar:hover {
-    background: #2a934b;
+    background: #d60f0f;
     animation: acender-vermelho ease-in-out infinite;
-    box-shadow: 0px 0px 80px #2a934b, 0px 0px 40px hsl(130, 30%, 47%);
+    box-shadow: 0px 0px 80px #d60f0f, 0px 0px 40px #f09999;
+}
+
+/* Estilos para o alerta de erro */
+.alert.alert-danger {
+    color: red; 
+    margin-bottom: 1rem; 
+    text-align: left; 
+    padding: 10px; 
+    border: 1px solid red; 
+    border-radius: 5px;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+.alert.alert-danger p {
+    margin-top: 0;
+    font-family: Sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+.alert.alert-danger ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    font-family: Sans-serif;
+    font-size: 14px;
 }

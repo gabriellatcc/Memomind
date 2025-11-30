@@ -5,13 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEMOMIND - Em Construção</title>
+<title>MEMOMIND - Teste</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
 
-<!-- CSS TESTE -->
 <style>
     body {
         font-family: 'Madimi One', sans-serif;
@@ -25,7 +24,6 @@
         text-align: center;
     }
 
-    /* Estilo para as mensagens de status */
     .alert-message {
         position: absolute; 
         top: 20px; 
@@ -51,7 +49,6 @@
         color: #721c24; 
         border-color: #f5c6cb;
     }
-    /* Fim dos estilos de mensagem */
 
     .container {
         background-color: #f2f2f2;
@@ -101,8 +98,7 @@
         color: #191919;
     }
 
-    .deploy-button {
-        /* Estilo para o botão de deploy */
+    .action-button {
         background-color: #007BFF; 
         color: #f2f2f2;
         padding: 12px 25px;
@@ -112,13 +108,16 @@
         font-family: 'Madimi One', sans-serif;
         cursor: pointer;
         transition: background-color 0.2s, transform 0.2s;
-        margin-bottom: 20px;
-        /* Adiciona espaço abaixo do botão de deploy */
+        margin-bottom: 10px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
     }
     
-    .deploy-button:hover {
+    .action-button:hover {
         background-color: #0056b3;
-        transform: scale(1.05);
+        transform: scale(1.02);
     }
 
     .logout-button-area {
@@ -149,14 +148,8 @@
 </head>
 
 <body>
-{{-- Bloco para exibir mensagens de status (sucesso ou erro) --}}
 @if (session('status'))
 <div class="alert-message alert-success">
-{{-- Usamos {!! !!} para renderizar HTML (como 
-
-
-
- ou emojis) --}}
 {!! session('status') !!}
 </div>
 @endif
@@ -166,30 +159,33 @@
         {!! session('error') !!}
     </div>
 @endif
-{{-- Fim do bloco de mensagens --}}
 
 <div class="container">
     <span class="construction-icon">🚧</span>
 
-    <h1>EM CONSTRUÇÃO</h1>
+    <h1>MEMOMIND</h1>
 
     @if (Auth::check())
         <p>
             Olá, <strong>{{ Auth::user()->name }}</strong>! <br>
-            O menu principal do MEMOMIND está sendo preparado para você.
-            Volte em breve para iniciar novas partidas!
+            Acesse o dashboard de dados ou realize o deploy do seu Arduino.
         </p>
 
-        {{-- Novo Formulário para Executar o Deploy --}}
-        <div class="deploy-button-area">
+        <div class="button-area">
+            <a href="{{ route('memomind.gamedata') }}" 
+               class="action-button" 
+               style="background-color: #27AE60;">
+                <span style="font-size: 1.2em;">📊</span> Ver Dados do Jogo
+            </a>
+        </div>
+        
+        <div class="button-area">
             <form method="POST" action="{{ route('deploy.arduino') }}">
                 @csrf
-                <button type="submit" class="deploy-button">
-                    Realizar Deploy da Arduino
+                <button type="submit" class="action-button">
+                    <span style="font-size: 1.2em;">🔌</span> Realizar Deploy Arduino
                 </button>
             </form>
-        </div>
-        {{-- Fim do Novo Formulário --}}
     @else
         <p>O menu principal do MEMOMIND está sendo preparado.</p>
     @endif

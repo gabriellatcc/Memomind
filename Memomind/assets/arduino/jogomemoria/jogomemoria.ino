@@ -1,4 +1,5 @@
 #include <LiquidCrystal.h>
+#include <ArduinoJson.h>
 
 LiquidCrystal lcd(12, 11, 10, 13, A4,A5);
 
@@ -25,6 +26,18 @@ const int ROUNDS = 100;
 int sequence[ROUNDS];
 int n = 0;
 bool ok = true;
+
+void enviar_dados_nodered(int rodadas_completas, bool vitoria_maxima) {
+  StaticJsonDocument<200> doc; 
+
+  doc["app_id"] = "Memomind";
+  doc["rodadas"] = rodadas_completas;
+  doc["max_rounds"] = ROUNDS;
+  doc["vitoria_maxima"] = vitoria_maxima;
+
+  serializeJson(doc, Serial);
+  Serial.println();
+}
 
 void flashAllLeds(int duration, int numFlashes) {
   for (int i = 0; i < numFlashes; i++) {
@@ -117,6 +130,8 @@ bool readButtons(){
 
 
 void setup() {
+    Serial.begin(9600); 
+
   lcd.begin(16, 2);
   lcd.clear();
   lcd.print(" JOGO COMECOU!");
@@ -160,6 +175,7 @@ void loop() {
   
   
   if(ok){
+        enviar_dados_nodered(ROUNDS, true);
     lcd.clear();
     lcd.print("VITÓRIA MÁXIMA!");
     lcd.setCursor(0, 1);
@@ -168,6 +184,8 @@ void loop() {
     delay(4000);
   }
   else{
+    enviar_dados_nodered(n - 1, false);
+
     printFail(); 
     delay(3000); 
   }

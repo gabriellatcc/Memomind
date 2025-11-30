@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEMOMIND - Cadastro</title>
 
+    <link rel="icon" href="{{ asset('images/logoMemomind.png') }}" type="image/png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
 
-    <!-- Supondo que você tem um arquivo CSS em public/css/login.css -->
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cadastro.css') }}">
 </head>
 
 <body>
@@ -31,7 +32,6 @@
             </div>
         </header>
 
-        <!-- Exibir erros de validação -->
         @if ($errors->any())
         <div class="alert alert-danger" style="color: red; margin-bottom: 1rem; text-align: left; padding: 10px; border: 1px solid red; border-radius: 5px;">
             <p>Ocorreram erros de validação:</p>
@@ -43,7 +43,6 @@
         </div>
         @endif
 
-        <!-- Ação corrigida: aponta para a rota Laravel e inclui @csrf -->
         <form class="login-form" action="{{ route('cadastro.submit') }}" method="POST">
             @csrf
             <div class="form-esquerda">
@@ -54,23 +53,20 @@
 
                 <div class="input-group">
                     <i class="icon user-icon"></i>
-                    <!-- name="name" para corresponder ao modelo 'User' -->
                     <input type="text" placeholder="um nome de usuário de 3 à 20 caracteres" id="username" name="name" value="{{ old('name') }}" required>
                 </div>
 
                 <div class="input-group">
                     <i class="icon lock-icon"></i>
-                    <input type="password" placeholder="senha com dígitos e números" id="password" name="password" required>
+                    <input type="password" placeholder="senha de mín. 8 caracteres (dígitos e números)" id="password" name="password" required>
                 </div>
 
                 <div class="input-group">
-                    <!-- name="password_confirmation" é obrigatório para o Laravel fazer a validação 'confirmed' -->
                     <input type="password" placeholder="confirme sua senha" id="confirm_password" name="password_confirmation" required>
                 </div>
             </div>
             <div class="form-direita">
                 <button type="submit" class="botao-jogar">Jogar</button>
-                <!-- Retorna para a tela de Login -->
                 <a href="{{ route('login.form') }}" class="botao-cadastrar">Cancelar</a>
             </div>
         </form>

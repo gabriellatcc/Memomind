@@ -16,7 +16,7 @@ class LoginController extends Controller
     {
         // Se o usuário já estiver logado, redireciona para o dashboard
         if (Auth::check()) {
-            return redirect()->route('dashboard');
+            return redirect()->route('main');
         }
 
         return view('login');
@@ -53,7 +53,7 @@ class LoginController extends Controller
             // sucesso na autenticação
             $request->session()->regenerate();
 
-            return redirect()->intended(route('dashboard'));
+            return redirect()->intended(route('main'));
         }
 
         // 4 -> falha na autenticação

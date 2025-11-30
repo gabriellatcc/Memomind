@@ -49,7 +49,7 @@ class CadastroController extends Controller
         // 3 -> loga automático após o registro
         Auth::login($user);
 
-        // 4 -> redireciona para o dashboard com mensagem de sucesso
-        return redirect()->route('dashboard')->with('success', 'Cadastro realizado com sucesso! Bem-vindo(a)!');
+        // 4 -> redireciona para o main com mensagem de sucesso
+        return redirect()->route('main')->with('success', 'Cadastro realizado com sucesso! Bem-vindo(a)!');
     }
 }

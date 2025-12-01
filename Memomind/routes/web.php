@@ -11,26 +11,12 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\RankingController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\Api\ArduinoController;
+use App\Http\Controllers\PasswordController;
 
-Route::redirect('/', '/login'); //o programa é iniciado pelo login partido daqui
+Route::redirect('/', '/login');
 
 Route::get('/../../index', function () {
     return view('login');
-});
-
-//chama rota para tela de login (View)
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
-//rota processamento login
-Route::post('/login', [LoginController::class, 'authenticate'])->name('login.submit');
-
-Route::get('/cadastro', [CadastroController::class, 'showRegistrationForm'])->name('cadastro.form');
-Route::post('/cadastro', [CadastroController::class, 'register'])->name('cadastro.submit');
-
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-// rota de teste
-Route::get('/teste', function () {
-    return 'A rota de teste funcionou!';
 });
 
 
@@ -51,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/deploy-arduino', [MainController::class, 'deployArduino'])->name('deploy.arduino');
     Route::post('/parar-arduino', [MainController::class, 'pararArduino'])->name('parar.arduino');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 });
 
@@ -59,3 +46,23 @@ Route::post('/api/arduino/salvar', [ArduinoController::class, 'salvarPartida'])
     ->withoutMiddleware([
         VerifyCsrfToken::class
     ]);
+
+Route::middleware(['guest'])->group(function () {
+    
+    // Login
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
+    Route::post('/login', [LoginController::class, 'authenticate'])->name('login.submit');
+
+    // Cadastro
+    Route::get('/cadastro', [CadastroController::class, 'showRegistrationForm'])->name('cadastro.form');
+    Route::post('/cadastro', [CadastroController::class, 'register'])->name('cadastro.submit');
+
+    // Redefinição de Senha (Fluxo Customizado)
+    Route::get('/forgot-password', function () {
+        return view('auth.reset_password_modal'); 
+    })->name('forgot-password');
+
+    Route::post('/forgot-password-custom', [PasswordController::class, 'sendTemporaryPassword'])
+        ->name('password.temporary');
+
+});

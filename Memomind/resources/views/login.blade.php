@@ -56,7 +56,7 @@
                         <i class="icon lock-icon"></i>
                         <input type="password" placeholder="Senha" id="password" name="password" required>
                     </div>
-                    <a href="#" class="forgot-password">
+                    <a href="{{ route('forgot-password') }}" class="forgot-password">
                         Esqueceu a senha? <span>Clique aqui</span>
                     </a>
                 </div>

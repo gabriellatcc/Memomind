@@ -4,46 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ranking Memomind</title>
+    
+    <!-- Inclua o CSS do Menu aqui -->
+    <link rel="stylesheet" href="{{ asset('css/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/ranking.css') }}">
 </head>
 <body>
 
+    <!-- Menu Lateral Padronizado (Com botão X e lógica de abrir) -->
+    @include('_sidebar_menu')
+
     <div class="bg-tech-grid"></div>
     <div class="ambient-light"></div>
-
-    <aside class="tech-sidebar">
-        <div style="font-family: 'Madimi One'; font-size: 1.5rem; text-align: center; margin-bottom: 20px; color: #fff;">
-            MEMO<span style="color: var(--neon-blue);">MIND</span>
-        </div>
-
-        <div class="menu-group">
-            <a href="{{ url('/main') }}" class="btn-tech-menu border-red">
-                <i class="fa-solid fa-house" style="margin-right: 10px;"></i> Início
-            </a>
-            <a href="#" class="btn-tech-menu border-green">
-                <i class="fa-solid fa-book" style="margin-right: 10px;"></i> Como Jogar
-            </a>
-            <a href="{{ url('/ranking') }}" class="btn-tech-menu btn-active-yellow">
-                <i class="fa-solid fa-trophy" style="margin-right: 10px;"></i> Ranking
-            </a>
-        </div>
-
-        <div class="menu-bottom">
-            <a href="#" class="btn-tech-menu border-blue">
-                <i class="fa-solid fa-users" style="margin-right: 10px;"></i> Sobre
-            </a>
-            <a href="{{ url('/configuracoes') }}" class="btn-tech-menu border-green">
-                <i class="fa-solid fa-gear" style="margin-right: 10px;"></i> Config
-            </a>
-            
-            <form action="{{ route('logout') }}" method="POST" style="width: 100%;">
-                @csrf
-                <button type="submit" class="btn-tech-menu border-red" style="width: 100%; cursor: pointer;">
-                    <i class="fa-solid fa-power-off" style="margin-right: 10px;"></i> Sair
-                </button>
-            </form>
-        </div>
-    </aside>
 
     <main class="main-content">
           

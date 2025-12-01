@@ -17,15 +17,18 @@ class ArduinoController extends Controller
         ]);
 
         try {
+            Log::info("Dados recebidos na API:", $request->all());
+
             $partida = Partida::create([
                 'app_id' => $request->input('app_id', 'Memomind'),
+                
+                'user_id' => $request->input('user_id'), 
+
                 'rodadas' => $request->input('rodadas'),
                 'max_rounds' => $request->input('max_rounds', 100),
                 'vitoria_maxima' => $request->input('vitoria_maxima'),
                 'status' => $request->input('vitoria_maxima') ? 'Vitoria' : 'Derrota'
             ]);
-
-            Log::info("Partida salva: ID " . $partida->id);
 
             return response()->json(['success' => true, 'id' => $partida->id], 201);
 

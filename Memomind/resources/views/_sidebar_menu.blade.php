@@ -1,41 +1,63 @@
-<button id="open-menu-btn" class="hamburger-btn" onclick="toggleMenu()">
-    &#9776;
+<div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
+
+<button id="open-menu-btn" class="tech-hamburger" onclick="toggleMenu()">
+    <i class="fa-solid fa-bars"></i>
 </button>
 
-<div id="sidebar-menu" class="sidebar-menu">
-    <div class="menu-header">
-        <span class="menu-title">≡</span>
-        <button id="close-menu-btn" class="menu-toggle-btn" onclick="toggleMenu()">
-            &times; 
+<aside id="sidebar-menu" class="tech-sidebar">
+    <div class="sidebar-header">
+        <button id="close-menu-btn" class="btn-close-tech" onclick="toggleMenu()">
+            <i class="fa-solid fa-xmark"></i>
         </button>
     </div>
-    
-    <nav class="menu-nav">
-        <a href="{{ route('main') }}" class="menu-item home-item" onclick="toggleMenu()">Início</a>
-        <a href="{{ route('ranking') }}" class="menu-item ranking-item" onclick="toggleMenu()">Ranking</a>
-        <a href="{{ route('doc') }}" class="menu-item doc-item" onclick="toggleMenu()">Documentação</a>
-        <a href="{{ route('settings') }}" class="menu-item settings-item" onclick="toggleMenu()">Configurações</a>
-    </nav>
 
-    <div class="menu-footer">
-        <form id="logout-menu-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
-        
-        <a href="#" class="menu-item logout-item" onclick="event.preventDefault(); document.getElementById('logout-menu-form').submit();">
-            Sair
+    <div class="menu-group">
+        <a href="{{ url('/main') }}" 
+           class="btn-tech-menu {{ Request::is('main*') ? 'btn-active-red' : 'border-red' }}">
+            <i class="fa-solid fa-house" style="margin-right: 10px;"></i> Início
+        </a>
+
+        <a href="{{ url('/documentacao') }}" 
+           class="btn-tech-menu {{ Request::is('documentacao*') ? 'btn-active-green' : 'border-green' }}">
+            <i class="fa-solid fa-book" style="margin-right: 10px;"></i> documentação
+        </a>
+
+        <a href="{{ url('/ranking') }}" 
+           class="btn-tech-menu {{ Request::is('ranking') ? 'btn-active-yellow' : 'border-yellow' }}">
+            <i class="fa-solid fa-trophy" style="margin-right: 10px;"></i> Ranking
         </a>
     </div>
-</div>
+
+    <div class="menu-bottom">
+        <a href="{{ url('/configuracoes') }}" 
+           class="btn-tech-menu {{ Request::is('configuracoes*') || Request::is('settings*') ? 'btn-active-green' : 'border-green' }}">
+            <i class="fa-solid fa-gear" style="margin-right: 10px;"></i> Configurações
+        </a>
+        
+        <form action="{{ route('logout') }}" method="POST" style="width: 100%;">
+            @csrf
+            <button type="submit" class="btn-tech-menu border-red" style="width: 100%; cursor: pointer;">
+                 Sair
+            </button>
+        </form>
+    </div>
+</aside>
 
 <script>
-
     function toggleMenu() {
         const sidebar = document.getElementById('sidebar-menu');
+        const overlay = document.getElementById('menu-overlay');
         const openBtn = document.getElementById('open-menu-btn');
         
         const isOpen = sidebar.classList.toggle('open');
+        overlay.classList.toggle('active');
         
-        openBtn.style.display = isOpen ? 'none' : 'block';
+        if (isOpen) {
+            openBtn.style.opacity = '0';
+            setTimeout(() => openBtn.style.display = 'none', 300);
+        } else {
+            openBtn.style.display = 'flex';
+            setTimeout(() => openBtn.style.opacity = '1', 10);
+        }
     }
 </script>

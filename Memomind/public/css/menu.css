@@ -1,211 +1,162 @@
-/* --- Importando as variáveis (caso este arquivo seja carregado separado do style.css) --- */
+/* --- 1. CONFIGURAÇÕES GLOBAIS --- */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;600&family=Madimi+One&display=swap');
+
 :root {
     --bg-dark: #09090b;
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --neon-blue: #2533b6;
-    --neon-green: #2ed30d;
-    --neon-yellow: #dabf0e;
+    --text-primary: #ededed;
+    --text-muted: #94a3b8;
     --neon-red: #d60f0f;
+    --neon-green: #2ed30d;
+    --neon-blue: #2533b6;
+    --neon-yellow: #dabf0e;
 }
 
-/* Estilos para o botão que abre o Menu (Estilo Tech Button) */
-.hamburger-btn {
+/* --- 2. BOTÃO HAMBURGUER --- */
+.tech-hamburger {
     position: fixed;
-    top: 50%; 
-    left: 20px;
-    transform: translateY(-50%);
-    z-index: 1000;
-    
-    /* Novo Estilo Glassmorphism */
-    background: rgba(9, 9, 11, 0.6); /* Fundo escuro translúcido */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    color: var(--neon-blue);
-    border: 1px solid rgba(59, 130, 246, 0.3); /* Borda azul sutil */
-    
-    padding: 12px 18px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-}
-
-.hamburger-btn:hover {
-    background: rgba(59, 130, 246, 0.15); /* Brilho azul interno */
-    border-color: var(--neon-blue);
-    color: white;
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); /* Glow externo */
-    transform: translateY(-50%) scale(1.05); 
-}
-
-/* Menu Principal (Sidebar com Fundo Tech) */
-.sidebar-menu {
-    position: fixed;
-    top: 0;
+    top: 50%;
     left: 0;
-    width: 280px;
-    height: 100%;
+    transform: translateY(-50%);
+    z-index: 1050;
     
-    /* Gradiente Tecnológico Escuro (O mesmo dos cards) */
-    background: linear-gradient(180deg, #09090b 0%, #121214 100%);
-    border-right: 1px solid var(--glass-border);
-    
-    color: #f2f2f2;
-    z-index: 1001;
-    transform: translateX(-100%);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Curva de animação mais suave */
     display: flex;
-    flex-direction: column;
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.8);
-    font-family: 'Inter', sans-serif;
-}
-
-/* Estado Aberto */
-.sidebar-menu.open {
-    transform: translateX(0); 
-}
-
-/* Header do Menu */
-.menu-header {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 25px 20px;
-    border-bottom: 1px solid var(--glass-border);
+    justify-content: center;
     
-    /* Sutil gradiente no topo */
-    background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
-}
-
-.menu-title {
-    /* Mudado para Rajdhani para combinar com o site */
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 1.5rem;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); /* Glow no título */
-}
-
-/* Botão de Fechar */
-.menu-header .menu-toggle-btn {
-    background: transparent;
-    border: 1px solid transparent;
-    color: #94a3b8;
-    font-size: 1.5rem;
+    width: 45px;
+    height: 60px;
+    background: rgba(9, 9, 11, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+    
+    color: var(--text-primary);
+    font-size: 1.4rem;
     cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: all 0.3s;
-}
-
-.menu-header .menu-toggle-btn:hover {
-    color: var(--neon-red);
-    background: rgba(239, 68, 68, 0.1);
-    border-color: rgba(239, 68, 68, 0.3);
-    text-shadow: 0 0 8px var(--neon-red);
-}
-
-/* Navegação Principal */
-.menu-nav {
-    flex-grow: 1;
-    padding: 20px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 4px; /* Espaço entre itens */
-}
-
-.menu-item {
-    display: flex; /* Para alinhar ícone e texto se houver */
-    align-items: center;
-    padding: 12px 24px;
-    color: #94a3b8; /* Cor padrão mais apagada (tech style) */
-    text-decoration: none;
-    font-family: 'Rajdhani', sans-serif; /* Fonte Tech */
-    font-weight: 600;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
+    backdrop-filter: blur(5px);
     transition: all 0.3s ease;
-    border-left: 3px solid transparent;
-    position: relative;
-    overflow: hidden;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.5);
 }
 
-/* Efeito de brilho de fundo ao passar o mouse (com gradiente lateral) */
-.menu-item::before {
-    content: '';
-    position: absolute;
+.tech-hamburger:hover {
+    width: 55px;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-blue);
+    color: #fff;
+}
+
+/* --- 3. OVERLAY --- */
+.menu-overlay {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+    z-index: 1040;
     opacity: 0;
-    transition: opacity 0.3s;
-    z-index: -1;
+    visibility: hidden;
+    transition: all 0.3s ease;
 }
 
-.menu-item:hover::before {
+.menu-overlay.active {
     opacity: 1;
+    visibility: visible;
 }
 
-/* --- Cores Específicas dos Itens (Estilo Neon) --- */
-
-/* Início: Azul */
-.home-item:hover {
-    background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
-    border-left: 3px solid var(--neon-blue);
-    color: white;
-    text-shadow: 0 0 8px var(--neon-blue);
-    padding-left: 30px; /* Pequeno movimento para a direita */
+/* --- 4. SIDEBAR --- */
+.tech-sidebar {
+    width: 280px;
+    height: 100vh;
+    background: rgba(9, 9, 11, 0.98);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    
+    position: fixed;
+    top: 0;
+    left: -290px; 
+    z-index: 1060;
+    box-shadow: 10px 0 40px rgba(0,0,0,0.8);
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Ranking: Verde */
-.ranking-item:hover {
-    background: linear-gradient(90deg, rgba(34, 197, 94, 0.1) 0%, transparent 100%);
-    border-left: 3px solid var(--neon-green);
-    color: white;
-    text-shadow: 0 0 8px var(--neon-green);
-    padding-left: 30px;
+.tech-sidebar.open {
+    left: 0;
 }
 
-/* Documentação: Amarelo */
-.doc-item:hover {
-    background: linear-gradient(90deg, rgba(234, 179, 8, 0.1) 0%, transparent 100%);
-    border-left: 3px solid var(--neon-yellow);
-    color: white;
-    text-shadow: 0 0 8px var(--neon-yellow);
-    padding-left: 30px;
+.sidebar-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
 }
 
-/* Configurações: Branco/Cinza */
-.settings-item:hover {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
-    border-left: 3px solid white;
-    color: white;
-    text-shadow: 0 0 8px white;
-    padding-left: 30px;
+.btn-close-tech {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s;
 }
 
-/* Footer (Logout) */
-.menu-footer {
-    padding: 20px;
-    border-top: 1px solid var(--glass-border);
-    background: linear-gradient(0deg, rgba(255,255,255,0.02) 0%, transparent 100%);
-}
-
-.logout-item {
-    border-left: 3px solid transparent !important;
-    color: #94a3b8;
-    border-radius: 6px; /* Botão mais contido no footer */
-}
-
-.logout-item:hover {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
-    border-left: 3px solid var(--neon-red);
+.btn-close-tech:hover {
     color: var(--neon-red);
-    text-shadow: 0 0 8px var(--neon-red);
-    padding-left: 24px; 
+    transform: rotate(90deg) scale(1.1);
+}
+
+/* --- 5. BOTÕES DO MENU --- */
+.menu-group, .menu-bottom { display: flex; flex-direction: column; gap: 15px; }
+.menu-group { margin-top: 10px; margin-bottom: auto; }
+.menu-bottom { margin-bottom: 20px; }
+
+.btn-tech-menu {
+    display: flex; align-items: center; padding: 15px;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.1rem;
+    text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none;
+    border-radius: 8px; color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-tech-menu:hover { transform: translateX(8px); color: #f2f2f2; }
+
+/* --- CORES: HOVER --- */
+.border-red:hover { border-color: var(--neon-red); box-shadow: inset 0 0 15px rgba(214, 15, 15, 0.2); }
+.border-green:hover { border-color: var(--neon-green); box-shadow: inset 0 0 15px rgba(46, 211, 13, 0.2); }
+.border-blue:hover { border-color: var(--neon-blue); box-shadow: inset 0 0 15px rgba(37, 51, 182, 0.2); }
+.border-yellow:hover { border-color: var(--neon-yellow); box-shadow: inset 0 0 15px rgba(218, 191, 14, 0.2); }
+
+/* --- CORES: ATIVO (Nova seção) --- */
+/* Quando a página está selecionada, usamos estas classes */
+.btn-active-red { 
+    border-color: var(--neon-red); 
+    background: rgba(214, 15, 15, 0.15); 
+    color: #fff; 
+    box-shadow: 0 0 15px rgba(214, 15, 15, 0.3); 
+}
+
+.btn-active-green { 
+    border-color: var(--neon-green); 
+    background: rgba(46, 211, 13, 0.15); 
+    color: #fff; 
+    box-shadow: 0 0 15px rgba(46, 211, 13, 0.3); 
+}
+
+.btn-active-blue { 
+    border-color: var(--neon-blue); 
+    background: rgba(37, 51, 182, 0.15); 
+    color: #fff; 
+    box-shadow: 0 0 15px rgba(37, 51, 182, 0.3); 
+}
+
+.btn-active-yellow { 
+    border-color: var(--neon-yellow); 
+    background: rgba(218, 191, 14, 0.15); 
+    color: #fff; 
+    box-shadow: 0 0 15px rgba(218, 191, 14, 0.3); 
 }

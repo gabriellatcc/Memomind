@@ -1,0 +1,503 @@
+/* --- 1. RESET GLOBAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Variáveis Globais (Tech Palette) --- */
+:root {
+    --bg-dark: #09090b;
+    --text-primary: #ededed;
+    --text-muted: #94a3b8;
+    
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --input-bg: rgba(0, 0, 0, 0.4);
+    
+    --neon-red: #d60f0f;
+    --neon-green: #2ed30d; /* Principal para Ação e Sucesso */
+    --neon-blue: #3b82f6;  /* Usado para Info/Links e Ícones */
+    --neon-yellow: #dabf0e; /* Usado para Warning/Alerta */
+}
+
+/* --- Reset e Layout --- */
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* --- Background Tech (Grid) --- */
+.bg-tech-grid {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -2;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    /* Reduzindo o mask para o centro para menos ruído */
+    mask-image: radial-gradient(circle at center, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 100%);
+}
+
+.ambient-light {
+    position: fixed;
+    top: 10%; left: 50%; transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%); /* Azul para Configurações */
+    z-index: -1;
+    filter: blur(80px);
+}
+
+/* --- Header Tech (Nós Controlados) --- */
+.main-header {
+    width: 100%;
+    padding: 60px 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    /* Resetando margem do cabeçalho */
+    margin-bottom: 0;
+}
+.header-row { display: flex; gap: 8px; }
+
+/* Usando o estilo de 'node-letter' para um efeito mais controlado e menos animado */
+.letra {
+    display: flex; justify-content: center; align-items: center;
+    width: 50px; height: 50px;
+    font-size: 24px;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.3);
+    background: rgba(0,0,0,0.4);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s;
+    line-height: 1;
+}
+
+/* Redefinindo animações para o novo padrão (menos agressivo) */
+@keyframes glow-subtle {
+    0%, 100% { box-shadow: none; opacity: 0.6; }
+    50% { box-shadow: 0 0 10px var(--glow-color); opacity: 1; }
+}
+
+.letra-m1 { --glow-color: var(--neon-red); animation: glow-subtle 4s infinite 0.2s; }
+.letra-e  { --glow-color: var(--neon-green); animation: glow-subtle 4s infinite 0.4s; }
+.letra-m2 { --glow-color: var(--neon-blue); animation: glow-subtle 4s infinite 0.6s; }
+.letra-o  { --glow-color: var(--neon-yellow); animation: glow-subtle 4s infinite 0.8s; }
+.letra-m3 { --glow-color: var(--neon-red); animation: glow-subtle 4s infinite 1.0s; }
+.letra-i  { --glow-color: var(--neon-green); animation: glow-subtle 4s infinite 1.2s; }
+.letra-n  { --glow-color: var(--neon-blue); animation: glow-subtle 4s infinite 1.4s; }
+.letra-d  { --glow-color: var(--neon-yellow); animation: glow-subtle 4s infinite 1.6s; }
+
+/* --- Container Principal Glass --- */
+.settings-container {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    padding: 40px 50px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 600px; 
+    margin-bottom: 50px;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4); /* Sombra mais suave */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Header do Card */
+.settings-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 20px;
+}
+
+.icon-box {
+    width: 45px; height: 45px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--neon-blue);
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    color: white;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 0.05em;
+}
+
+/* User Badge */
+.user-id-badge {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: var(--neon-blue);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+    letter-spacing: 0.1em;
+}
+
+/* --- Alerts Tech Style --- */
+.alert {
+    padding: 12px 15px;
+    margin-bottom: 25px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    display: flex; align-items: center; gap: 10px;
+}
+
+.alert-success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: var(--neon-green);
+    box-shadow: 0 0 5px rgba(34, 197, 94, 0.3);
+}
+
+.alert-info { /* Adicionado para a mensagem "Nenhuma alteração" */
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: var(--neon-blue);
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+}
+
+.alert-danger {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--neon-red);
+    box-shadow: 0 0 5px rgba(239, 68, 68, 0.3);
+}
+
+/* --- Formulário --- */
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-title {
+    font-family: 'Rajdhani', sans-serif;
+    color: white;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    margin: 0 0 15px 0;
+    letter-spacing: 0.1em;
+    display: flex; align-items: center; gap: 10px;
+}
+
+.section-title.text-warning { color: var(--neon-yellow); }
+
+.section-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+.tech-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    margin: 10px 0;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex; align-items: center; gap: 8px;
+}
+
+.form-group label i { color: var(--neon-blue); opacity: 0.7; }
+
+.form-group input {
+    padding: 12px 15px;
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    background: var(--input-bg);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
+}
+
+/* Input Desabilitado (Estilo Travado) */
+.form-group input:disabled {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.02);
+    color: #555;
+    cursor: not-allowed;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.02) 10px, rgba(255,255,255,0.02) 20px);
+}
+
+.input-note {
+    font-size: 0.75rem;
+    color: #525252;
+    margin-top: 6px;
+    display: flex; align-items: center; gap: 5px;
+}
+
+.error-message {
+    color: var(--neon-red);
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- Botão Principal (Save) --- */
+.save-button {
+    margin-top: 20px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    border-radius: 6px;
+    cursor: pointer;    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    padding: 14px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.3); /* Brilho controlado */
+}
+
+.save-button:hover {
+    background: rgba(34, 197, 94, 0.2);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+    transform: translateY(-2px);
+}
+
+.save-button i { margin-right: 10px; }
+
+/* ------------------------------------- */
+/* --- ESTILOS DO MODAL (Redefinidos)--- */
+/* ------------------------------------- */
+
+/* Overlay do Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Container do Modal (Foco no Glass + Borda Neon) */
+.modal-container {
+    width: 90%;
+    max-width: 400px;
+    padding: 40px 30px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--neon-green);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(46, 211, 13, 0.3); /* Sombra mais sutil */
+    position: relative;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-container {
+    transform: scale(1);
+}
+
+/* Botão de Fechar */
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+.close-button:hover {
+    color: var(--neon-red);
+}
+
+/* Título do Modal */
+.modal-container h3 {
+    color: var(--neon-green);
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 1.5rem;
+}
+
+.modal-container .description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+/* Input de Email */
+.input-group {
+    margin-bottom: 20px;
+}
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    box-sizing: border-box;
+}
+.input-group input:focus {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 10px rgba(46, 211, 13, 0.4);
+}
+
+/* Botão Enviar do Modal */
+.send-button {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--neon-green);
+    border-radius: 6px;
+    background: var(--neon-green);
+    color: var(--bg-dark); 
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+.send-button:hover {
+    background: var(--bg-dark); 
+    color: var(--neon-green);
+    box-shadow: 0 0 20px var(--neon-green);
+    transform: translateY(-2px);
+}
+
+/* --- Ícone SVG (Chave de Recuperação Futurista) --- */
+.recovery-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    /* Adiciona um leve brilho neon ao ícone */
+    filter: drop-shadow(0 0 8px rgba(46, 211, 13, 0.6));
+}
+.recovery-icon path,
+.recovery-icon circle {
+    fill: none;
+    stroke: var(--neon-green);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ------------------------------------- */
+/* --- Responsividade Geral --- */
+/* ------------------------------------- */
+@media (max-width: 768px) {
+    .settings-container { 
+        padding: 30px 20px; 
+        margin-top: 20px; 
+        width: 95%; /* Adaptação de largura */
+    }
+    .user-id-badge { 
+        position: relative; 
+        top: 0; 
+        right: 0; 
+        margin-bottom: 20px; 
+        display: inline-flex; 
+    }
+    .letra { 
+        width: 35px; 
+        height: 35px; 
+        font-size: 16px; 
+    }
+    .header-row { 
+        gap: 5px; 
+    }
+    h2 { 
+        font-size: 1.5rem; 
+    }
+    .save-button { 
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+    /* Modal Responsivo */
+    .modal-container {
+        padding: 30px 20px;
+    }
+}

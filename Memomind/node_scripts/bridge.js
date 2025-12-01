@@ -4,7 +4,6 @@ const { ReadlineParser } = require('@serialport/parser-readline');
 const axios = require('axios');
 
 const portPath = process.env.ARDUINO_PORT || 'COM3';
-// Tenta pegar do ambiente (passado pelo shell) ou do .env
 const userId = process.env.GAME_USER_ID || null; 
 const apiUrl = process.env.API_URL || 'http://localhost:8000/api/arduino/salvar';
 
@@ -34,7 +33,6 @@ parser.on('data', async (data) => {
     try {
         const jsonDados = JSON.parse(data);
 
-        // Adiciona o ID do usuário ao pacote que vai para o Laravel
         const payload = {
             ...jsonDados,
             user_id: userId 

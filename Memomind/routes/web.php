@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CadastroController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\TesteController;
 use App\Http\Controllers\SettingsController;
 
@@ -49,5 +50,7 @@ Route::middleware(['auth'])->group(function () {
     
     Route::post('/configuracoes', [SettingsController::class, 'update'])->name('settings.update');
 
-    Route::post('/deploy-arduino', [TesteController::class, 'deployArduino'])->name('deploy.arduino');
+    Route::post('/deploy-arduino', [MainController::class, 'deployArduino'])->name('deploy.arduino');
+    Route::post('/parar-arduino', [MainController::class, 'pararArduino'])->name('parar.arduino');
+
 });

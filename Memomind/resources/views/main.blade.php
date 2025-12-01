@@ -15,6 +15,75 @@
     
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         <link rel="stylesheet" href="{{ asset('css/menu.css') }}">
+    <style>
+        /* Estilos dos Alertas */
+    .alert-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 9999;
+            width: auto;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .alert-message {
+            pointer-events: auto;
+            background: rgba(9, 9, 11, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.8);
+            
+            animation: slideLeftFade 0.5s ease-out forwards;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* --- Sucesso (Verde Neon) --- */
+        .alert-success {
+            border-left: 4px solid var(--neon-green);
+            background: linear-gradient(90deg, rgba(46, 211, 13, 0.1) 0%, rgba(9,9,11,0.95) 100%);
+        }
+        .alert-success::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--neon-green);
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        /* --- Erro (Vermelho Neon) --- */
+        .alert-danger {
+            border-left: 4px solid var(--neon-red);
+            background: linear-gradient(90deg, rgba(214, 15, 15, 0.1) 0%, rgba(9,9,11,0.95) 100%);
+        }
+        .alert-danger::before {
+            content: '\f071';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--neon-red);
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        @keyframes slideLeftFade {
+            0% { opacity: 0; transform: translateX(50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+
+    </style>
 
 </head>
 <body class="antialiased">
@@ -24,26 +93,43 @@
     <div class="ambient-light"></div>
 
     <nav class="navbar fixed w-full z-50 top-0 left-0">
+
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-end items-center gap-4">
-                <div class="hidden md:flex items-center">
-                    <a href="#" class="game-btn btn-stop">
-                    Parar    
-                    </a>
-                </div>
-                <div class="hidden md:flex items-center">
-                    <a href="#" class="game-btn btn-play">
-                    Jogar
-                    </a>
-                </div>
 
-                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </button>
+            <div class="hidden md:flex items-center">
+                <form method="POST" action="{{ route('parar.arduino') }}">
+                    @csrf
+                    <button type="submit" class="game-btn btn-stop">
+                        Parar
+                    </button>
+                </form>
             </div>
-        </div>
 
+            <div class="hidden md:flex items-center">
+                <form method="POST" action="{{ route('deploy.arduino') }}">
+                    @csrf
+                    <button type="submit" class="game-btn btn-play">
+                        <span style="font-size: 1.2em; margin-right: 5px;"></span> Jogar
+                    </button>
+                </form>
+            </div>
+
+        </div>
     </nav>
+    <div class="alert-container">
+        @if (session('status'))
+            <div class="alert-message alert-success">
+                <span>{!! session('status') !!}</span>
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert-message alert-danger">
+                <span>{!! session('error') !!}</span>
+            </div>
+        @endif
+    </div>
 
     <header id="inicio" class="relative pt-40 pb-24 flex flex-col items-center justify-center min-h-[90vh] text-center px-4">
         

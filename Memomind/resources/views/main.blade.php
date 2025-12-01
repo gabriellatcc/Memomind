@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memomind - Tecnologia Assistiva</title>
+    <title>Memomind - Início</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -152,7 +152,7 @@
 
         <div class="max-w-4xl mx-auto space-y-6 z-10">
             <div class="inline-block px-3 py-1 border border-blue-500/30 rounded bg-blue-500/10 text-blue-400 text-xs font-tech tracking-widest mb-4">
-                PROJETO DE EXTENSÃO UNIVERSITÁRIA
+                PROJETO DE EXTENSÃO
             </div>
             <p class="text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto font-light">
                 Sistema híbrido de intervenção terapêutica para TEA. Transformamos estímulos físicos em métricas clínicas precisas através de hardware acessível.
@@ -283,9 +283,9 @@
                         <div class="group relative p-6 bg-[#09090b] border border-gray-800 hover:border-gray-600 transition duration-300">
                             <div class="absolute left-0 top-0 bottom-0 w-1 bg-blue-600"></div>
                             <h4 class="text-white font-tech text-xl mb-2 flex justify-between">
-                                Laravel Framework <span class="text-xs text-gray-500 font-inter font-normal mt-1">v10.x</span>
+                                Laravel Framework <span class="text-xs text-gray-500 font-inter font-normal mt-1">v12.26.4</span>
                             </h4>
-                            <p class="text-gray-400 text-sm font-light">Backend robusto para gestão de pacientes, autenticação segura e API RESTful.</p>
+                            <p class="text-gray-400 text-sm font-light">Backend robusto para gestão de usuários e autenticação segura.</p>
                         </div>
                         
                         <div class="group relative p-6 bg-[#09090b] border border-gray-800 hover:border-gray-600 transition duration-300">

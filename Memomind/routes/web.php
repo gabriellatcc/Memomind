@@ -1,12 +1,16 @@
 <?php
 
-// AGUARDA use App\Http\Controllers\Memomind;
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Foundation\Http\Middleware\ValidateCsrfTokens;
+
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CadastroController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\TesteController;
+use App\Http\Controllers\RankingController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\Api\ArduinoController;
 
 Route::redirect('/', '/login'); //o programa é iniciado pelo login partido daqui
 
@@ -29,12 +33,6 @@ Route::get('/teste', function () {
     return 'A rota de teste funcionou!';
 });
 
-    //  TESTE Route::get('/memomind-data', [Memomind::class, 'showGameDataDashboard'])->middleware('auth') ->name('memomind.gamedata');
-
-    // TESTE Route::get('/dashboard', [Memomind::class, 'index'])->name('dashboard');
-
-    // TESTE Route::get('/memomind-data', [Memomind::class, 'showGameDataDashboard'])->middleware('auth') ->name('memomind.gamedata');
-
 
 // ROTAS PROTEGIDAS (Exigem Login)
 Route::middleware(['auth'])->group(function () {
@@ -49,8 +47,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/configuracoes', [SettingsController::class, 'index'])->name('settings');
     
     Route::post('/configuracoes', [SettingsController::class, 'update'])->name('settings.update');
+    Route::get('/ranking', [RankingController::class, 'index'])->name('ranking');
 
     Route::post('/deploy-arduino', [MainController::class, 'deployArduino'])->name('deploy.arduino');
     Route::post('/parar-arduino', [MainController::class, 'pararArduino'])->name('parar.arduino');
 
 });
+
+// ROTAS API
+Route::post('/api/arduino/salvar', [ArduinoController::class, 'salvarPartida'])
+    ->withoutMiddleware([
+        VerifyCsrfToken::class
+    ]);

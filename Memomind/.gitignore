@@ -32,3 +32,5 @@ pnpm-debug.log*
 
 /public/packages/
 /public/staging/
+node_scripts/node_modules
+node_scripts/arduino_log.txt

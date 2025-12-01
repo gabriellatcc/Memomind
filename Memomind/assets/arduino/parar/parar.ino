@@ -10,11 +10,7 @@ void setup() {
 
   lcd.begin(16, 2);
   lcd.clear();
-  lcd.display(); 
-
-  lcd.setCursor(0, 0); 
   lcd.print("      JOGO      ");
-  
   lcd.setCursor(0, 1);
   lcd.print("  INTERROMPIDO  ");
 }

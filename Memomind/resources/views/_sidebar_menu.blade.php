@@ -12,7 +12,7 @@
     
     <nav class="menu-nav">
         <a href="{{ route('main') }}" class="menu-item home-item" onclick="toggleMenu()">Início</a>
-        <a href="#" class="menu-item ranking-item" onclick="toggleMenu()">Ranking</a>
+        <a href="{{ route('ranking') }}" class="menu-item ranking-item" onclick="toggleMenu()">Ranking</a>
         <a href="{{ route('doc') }}" class="menu-item doc-item" onclick="toggleMenu()">Documentação</a>
         <a href="{{ route('settings') }}" class="menu-item settings-item" onclick="toggleMenu()">Configurações</a>
     </nav>

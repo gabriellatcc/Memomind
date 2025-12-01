@@ -1,0 +1,429 @@
+/* --- 1. CONFIGURAÇÕES GLOBAIS & FONTES --- */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;600&family=Madimi+One&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+:root {
+    --bg-dark: #09090b;
+    --text-primary: #ededed;
+    --text-muted: #94a3b8;
+    
+    --neon-red: #d60f0f;
+    --neon-green: #2ed30d;
+    --neon-blue: #2533b6;
+    --neon-yellow: #dabf0e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+}
+
+/* --- 2. FUNDO TECNOLÓGICO --- */
+.bg-tech-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    pointer-events: none;
+}
+
+.ambient-light {
+    position: fixed;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(37, 51, 182, 0.15) 0%, transparent 70%);
+    z-index: -1;
+    filter: blur(80px);
+    animation: pulse-light 8s infinite ease-in-out;
+}
+
+@keyframes pulse-light {
+    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* --- 3. MENU LATERAL --- */
+.tech-sidebar {
+    width: 280px;
+    height: 100%;
+    background: rgba(9, 9, 11, 0.85);
+    backdrop-filter: blur(16px);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    z-index: 10;
+    box-shadow: 5px 0 30px rgba(0,0,0,0.5);
+}
+
+.menu-group, .menu-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.menu-group { margin-top: 20px; margin-bottom: auto; }
+.menu-bottom { margin-bottom: 20px; }
+
+.btn-tech-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    border-radius: 8px;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-tech-menu:hover { transform: translateX(5px); color: #f2f2f2; }
+
+/* Cores do Menu */
+.border-red:hover { border-color: var(--neon-red); box-shadow: 0 0 10px var(--neon-red); }
+.border-green:hover { border-color: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
+.btn-active-yellow { border-color: var(--neon-yellow); background: rgba(218, 191, 14, 0.1); color: #fff; box-shadow: 0 0 15px rgba(218, 191, 14, 0.2); }
+.border-blue:hover { border-color: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); }
+
+/* --- 4. CONTEÚDO PRINCIPAL --- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Header Animado */
+.ranking-header-anim {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    transform: scale(0.9);
+}
+
+.node-letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+    font-family: 'Madimi One', cursive;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.3);
+}
+
+/* Animações */
+@keyframes glow-sequence-red { 50% { border-color: var(--neon-red); box-shadow: 0 0 20px var(--neon-red); background: rgba(214, 15, 15, 0.5); color: #f2f2f2; } }
+@keyframes glow-sequence-green { 50% { border-color: var(--neon-green); box-shadow: 0 0 20px var(--neon-green); background: rgba(46, 211, 13, 0.5); color: #f2f2f2;} }
+@keyframes glow-sequence-blue { 50% { border-color: var(--neon-blue); box-shadow: 0 0 20px var(--neon-blue); background: rgba(37, 51, 182, 0.5); color: #f2f2f2;; } }
+@keyframes glow-sequence-yellow { 50% { border-color: var(--neon-yellow); box-shadow: 0 0 20px var(--neon-yellow); background: rgba(218, 191, 14, 0.5); color: #f2f2f2; } }
+
+.anim-red { animation: glow-sequence-red 4s infinite; }
+.anim-green { animation: glow-sequence-green 4s infinite; }
+.anim-blue { animation: glow-sequence-blue 4s infinite; }
+.anim-yellow { animation: glow-sequence-yellow 4s infinite; }
+
+.d-1 { animation-delay: 0.2s; } .d-2 { animation-delay: 0.4s; } .d-3 { animation-delay: 0.6s; } .d-4 { animation-delay: 0.8s; }
+.d-5 { animation-delay: 1.0s; } .d-6 { animation-delay: 1.2s; } .d-7 { animation-delay: 1.4s; } .d-8 { animation-delay: 1.6s; }
+
+
+/* --- 5. CARD DE RANKING --- */
+.ranking-container {
+    background: rgba(3, 6, 31, 0.95);
+    border: 2px solid #304ffe;
+    border-radius: 20px;
+    padding: 40px;
+    width: 700px;
+    max-width: 95%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 30px rgba(48, 79, 254, 0.4);
+}
+
+.ranking-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #f2f2f2;
+}
+
+/* Novo Cabeçalho da Tabela */
+.ranking-labels {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 10px 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.label-pos { width: 50px; text-align: right; margin-right: 20px; }
+.label-user { flex: 1; text-align: center; }
+.label-score { width: 120px; text-align: center; }
+
+.ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ranking-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.position {
+    font-size: 1.8rem;
+    font-weight: 700;
+    width: 50px;
+    text-align: right;
+    margin-right: 20px;
+    font-variant-numeric: tabular-nums;
+    color: #f2f2f2;
+}
+
+/* --- ESTILO DAS PÍLULAS COLORIDAS (FLAT / LISINHO) --- */
+.player-pill, .score-pill {
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #f2f2f2;
+    border: 1px solid rgba(255,255,255,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.player-pill {
+    flex: 1;
+    margin-right: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.score-pill {
+    width: 120px;
+    text-align: center;
+}
+
+/* --- CORES FLAT (SÓLIDAS) --- */
+
+/* Vermelho */
+.variant-red .player-pill, .variant-red .score-pill {
+    background-color: #b71c1c; 
+    border-color: #d32f2f;
+}
+
+/* Azul */
+.variant-blue .player-pill, .variant-blue .score-pill {
+    background-color: #1565c0;
+    border-color: #1976d2;
+}
+
+/* Amarelo */
+.variant-yellow .player-pill, .variant-yellow .score-pill {
+    background-color: #f9a825;
+    border-color: #fbc02d;
+    color: #fff;
+}
+
+/* Verde */
+.variant-green .player-pill, .variant-green .score-pill {
+    background-color: #2e7d32;
+    border-color: #388e3c;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.5); }
+::-webkit-scrollbar-thumb { background: #304ffe; border-radius: 4px; }
+
+/* Animações de Cores do Header*/
+@keyframes acender-vermelho {
+    0% { background: #d60f0f80; box-shadow: none; }
+    50% { background: #d60f0f; color: #f2f2f2; box-shadow: 0px 0px 80px #d60f0f, 0px 0px 40px #f09999; }
+    100% { background: #d60f0f80; box-shadow: none; }
+}
+@keyframes acender-azul{
+    0% { background: #2533b67e; box-shadow: none; }
+    50% { background: #2533b6; color: #f2f2f2; box-shadow: 0px 0px 80px #2533b6, 0px 0px 40px #9e99f1; }
+    100% { background: #2533b67e; box-shadow: none; }
+}
+@keyframes acender-amarelo{
+    0% { background: #dabf0e88; box-shadow: none; }
+    50% { background: #dabf0e; color: #f2f2f2; box-shadow: 0px 0px 80px #dabf0e, 0px 0px 40px #f1e895; }
+    100% { background: #dabf0e88; box-shadow: none; }
+}
+@keyframes acender-verde{
+    0% { background: #2ed30d81; box-shadow: none; }
+    50% { background: #2ed30d; color: #f2f2f2; box-shadow: 0px 0px 80px #2ed30d, 0px 0px 40px #b0f096; }
+    100% { background: #2ed30d81; box-shadow: none; }
+}
+
+/* Header */
+.main-header {
+    width: 100%;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 50px;
+    font-family: 'Madimi One', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-header .header-row { display: flex; gap: 15px; }
+.main-header .letra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    font-size: 65px;
+    line-height: 1;
+    border-radius: 60%;
+    border: 1px solid #f2f2f2;
+    color: #f2f2f2;
+    font-family: 'Madimi One', sans-serif;
+    transition: all 0.3s ease;
+}
+.main-header .letra-m1 { background: #d60f0f; animation: acender-vermelho 4.0s ease-in-out infinite; animation-delay: 0.2s; }
+.main-header .letra-e  { background: #2ed30d; animation: acender-verde 4.0s ease-in-out infinite; animation-delay: 0.4s; }
+.main-header .letra-m2 { background: #2533b6; animation: acender-azul 4.0s ease-in-out infinite; animation-delay: 0.6s; }
+.main-header .letra-o  { background: #dabf0e; animation: acender-amarelo 4.0s ease-in-out infinite; animation-delay: 0.8s; }
+.main-header .letra-m3 { background: #d60f0f; animation: acender-vermelho 4.0s ease-in-out infinite; animation-delay: 1.0s; }
+.main-header .letra-i  { background: #2ed30d; animation: acender-verde 4.0s ease-in-out infinite; animation-delay: 1.2s; }
+.main-header .letra-n  { background: #2533b6; animation: acender-azul 4.0s ease-in-out infinite; animation-delay: 1.4s; }
+.main-header .letra-d  { background: #dabf0e; animation: acender-amarelo 4.0s ease-in-out infinite; animation-delay: 1.6s; }
+/* Responsividade */
+@media (max-width: 768px) {
+    .main-header { padding: 15px 0; }
+    .main-header .letra { width: 45px; height: 45px; font-size: 30px; }
+    .main-header .header-row { gap: 8px; }
+    .settings-container { padding: 20px; width: 95%; }
+    .save-button { font-size: 1.1rem; }
+}
+
+
+/* --- Estilo Base do Botão Tech --- */
+.game-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 10px 28px;
+    
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #d1d5db;
+    
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Efeito de brilho ao passar o mouse (Geral) */
+.game-btn:hover {
+    color: #f2f2f2;
+    transform: translateY(-2px);
+}
+
+/* --- Botão JOGAR (Verde) --- */
+.btn-play:hover {
+    background: rgba(46, 211, 13, 0.15);
+    border-color: var(--neon-green);
+    box-shadow: 
+        0 0 15px rgba(46, 211, 13, 0.4),
+        inset 0 0 10px rgba(46, 211, 13, 0.1);
+    text-shadow: 0 0 8px var(--neon-green);
+}
+
+/* Adiciona um ícone play via CSS  */
+.btn-play::before {
+    content: '\f04b'; 
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-right: 8px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+.btn-play:hover::before { opacity: 1; }
+
+
+/* --- Botão PARAR (Vermelho) --- */
+.btn-stop:hover {
+    background: rgba(214, 15, 15, 0.15);
+    border-color: var(--neon-red);
+    box-shadow: 
+        0 0 15px rgba(214, 15, 15, 0.5),
+        inset 0 0 10px rgba(214, 15, 15, 0.1);
+    text-shadow: 0 0 8px var(--neon-red);
+}
+
+.btn-stop::before {
+    content: '\f04d';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-right: 8px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+.btn-stop:hover::before { opacity: 1; }
+
+/* Responsividade (para telas menores) */
+@media (max-width: 768px) {
+    .game-btn {
+        padding: 8px 20px;
+        width: 100%; 
+    }
+}

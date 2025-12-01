@@ -2,13 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 class Partida extends Model
 {
-    public function partidas()
+    use HasFactory;
+
+    protected $fillable = [
+        'app_id',
+        'rodadas',
+        'max_rounds',
+        'vitoria_maxima',
+        'status',
+        'user_id'
+    ];
+
+    public function user()
     {
-        return $this->belongsToMany(Partida::class, 'Joga', 'fk_User_id', 'fk_Partida_codPartida')
-            ->withPivot('pontuacaoObtida');
+        return $this->belongsTo(User::class);
     }
 }

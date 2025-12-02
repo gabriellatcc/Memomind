@@ -34,7 +34,7 @@ Agosto 2025 - Dezembro 2025.
 
 ---
 
-## ⚙️ Arquitetura do Sistema
+## Arquitetura do Sistema
 
 O sistema opera em uma arquitetura de **Gateway Serial**, onde o software web controla o hardware físico:
 
@@ -45,7 +45,7 @@ O sistema opera em uma arquitetura de **Gateway Serial**, onde o software web co
 
 ---
 
-## 🚀 Como Rodar o Projeto
+## Como Rodar o Projeto
 
 ### 1. Pré-requisitos
 Certifique-se de ter instalado em sua máquina:
@@ -113,5 +113,6 @@ O sistema irá automaticamente compilar o código, enviar para o Arduino e inici
 * Érico Quintana - <strong>Design de Front-end e pré-implementação</strong>
 * Maria Auxiliadora - <strong>Design de Front-end</strong>
 * Matheus Almeida - <strong>Documentação</strong>
+
 
 Este projeto foi desenvolvido para o Acelera Fatec (FATEC Cruzeiro) sob orientação dos professores Carlos Alberto do Nascimento e Carlos Henrique Loureiro Feichas.

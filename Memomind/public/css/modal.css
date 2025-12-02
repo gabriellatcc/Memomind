@@ -453,7 +453,6 @@ h2 {
     width: 80px;
     height: 80px;
     margin-bottom: 20px;
-    /* Adiciona um leve brilho neon ao ícone */
     filter: drop-shadow(0 0 8px rgba(46, 211, 13, 0.6));
 }
 .recovery-icon path,
@@ -472,7 +471,7 @@ h2 {
     .settings-container { 
         padding: 30px 20px; 
         margin-top: 20px; 
-        width: 95%; /* Adaptação de largura */
+        width: 95%;
     }
     .user-id-badge { 
         position: relative; 
@@ -496,7 +495,6 @@ h2 {
         font-size: 1rem;
         padding: 10px 15px;
     }
-    /* Modal Responsivo */
     .modal-container {
         padding: 30px 20px;
     }

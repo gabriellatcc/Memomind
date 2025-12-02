@@ -58,12 +58,10 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <h1>Memomind - Redefinição de Senha</h1>
         </div>
 
-        <!-- Content -->
         <div class="content">
             <p>Olá,</p>
             <p>Recebemos uma solicitação para redefinir a senha da sua conta Memomind. Abaixo está a sua nova senha temporária:</p>
@@ -82,7 +80,6 @@
             <p>Atenciosamente,<br>A Equipe Memomind</p>
         </div>
 
-        <!-- Footer -->
         <div class="footer">
             Este e-mail foi enviado por memomindacelera@gmail.com. Não é necessário responder.
         </div>

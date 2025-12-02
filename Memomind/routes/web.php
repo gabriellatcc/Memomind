@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Foundation\Http\Middleware\ValidateCsrfTokens;
@@ -13,7 +14,12 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\Api\ArduinoController;
 use App\Http\Controllers\PasswordController;
 
-Route::redirect('/', '/login');
+Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('main'); 
+    }
+    return redirect()->route('login.form');
+});
 
 Route::get('/../../index', function () {
     return view('login');

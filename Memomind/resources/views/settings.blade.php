@@ -91,7 +91,7 @@
         @if ($errors->any())
             <div class="alert alert-danger">
                 <i class="fa-solid fa-triangle-exclamation"></i> 
-                <span>Houve um erro na validação dos dados:</span>
+                <span>Houve um erro na <br>atualização dos dados:</span>
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>

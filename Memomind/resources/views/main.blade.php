@@ -199,7 +199,7 @@
 
                 <div class="pt-4">
                     <h4 class="text-2xl text-white mb-6">Estrutura do Sistema</h4>
-                    <p class="text-gray-400 mb-8 font-light">O ecossistema é composto por duas entidades integradas via protocolo MQTT, garantindo baixa latência na coleta de dados.</p>
+                    <p class="text-gray-400 mb-8 font-light">O ecossistema utiliza uma arquitetura de Gateway Serial, conectando o hardware físico diretamente à nuvem via Node.js para transmissão instantânea de resultados.</p>
                     
                     <div class="space-y-4">
                         <div class="flex items-center gap-4 p-4 border border-gray-800 bg-[#09090b] rounded hover:border-gray-700 transition">
@@ -280,33 +280,36 @@
             <div class="grid md:grid-cols-2 gap-12">
                 <div>
                     <div class="space-y-1">
+                        <!-- CARD 1: LARAVEL -->
                         <div class="group relative p-6 bg-[#09090b] border border-gray-800 hover:border-gray-600 transition duration-300">
                             <div class="absolute left-0 top-0 bottom-0 w-1 bg-blue-600"></div>
                             <h4 class="text-white font-tech text-xl mb-2 flex justify-between">
                                 Laravel Framework <span class="text-xs text-gray-500 font-inter font-normal mt-1">v12.26.4</span>
                             </h4>
-                            <p class="text-gray-400 text-sm font-light">Backend robusto para gestão de usuários e autenticação segura.</p>
+                            <p class="text-gray-400 text-sm font-light">Backend robusto para gestão de usuários, autenticação segura e API REST.</p>
                         </div>
                         
+                        <!-- CARD 2: NODE.JS BRIDGE (Substituindo MQTT) -->
                         <div class="group relative p-6 bg-[#09090b] border border-gray-800 hover:border-gray-600 transition duration-300">
                             <div class="absolute left-0 top-0 bottom-0 w-1 bg-green-500"></div>
                             <h4 class="text-white font-tech text-xl mb-2 flex justify-between">
-                                Broker MQTT <span class="text-xs text-gray-500 font-inter font-normal mt-1">Mosquitto</span>
+                                Node.js Bridge <span class="text-xs text-gray-500 font-inter font-normal mt-1">Serial Port</span>
                             </h4>
-                            <p class="text-gray-400 text-sm font-light">Protocolo leve de mensageria Pub/Sub para comunicação bidirecional realtime.</p>
+                            <p class="text-gray-400 text-sm font-light">Middleware de baixa latência que traduz sinais Serial do Arduino para requisições HTTP.</p>
                         </div>
 
+                        <!-- CARD 3: SHELL AUTOMATION (Substituindo Node-Red) -->
                         <div class="group relative p-6 bg-[#09090b] border border-gray-800 hover:border-gray-600 transition duration-300">
                             <div class="absolute left-0 top-0 bottom-0 w-1 bg-yellow-500"></div>
                             <h4 class="text-white font-tech text-xl mb-2 flex justify-between">
-                                Node-Red <span class="text-xs text-gray-500 font-inter font-normal mt-1">Flow-based</span>
+                                Shell Automation <span class="text-xs text-gray-500 font-inter font-normal mt-1">Bash Scripts</span>
                             </h4>
-                            <p class="text-gray-400 text-sm font-light">Orquestração de fluxo de dados e lógica de integração Hardware-Software.</p>
+                            <p class="text-gray-400 text-sm font-light">Orquestração de upload de código (.ino) e gestão de processos em tempo real.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white/5 rounded-lg border border-white/5 p-8 relative overflow-hidden">
+                <div class="bg-white/5 rounded-lg border border-white/5 p-8 relative overflow-hidden transition-all duration-300 hover:border-blue-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]">
                     <div class="absolute top-0 right-0 p-3 opacity-20">
                         <i class="fa-solid fa-palette text-6xl text-white"></i>
                     </div>
